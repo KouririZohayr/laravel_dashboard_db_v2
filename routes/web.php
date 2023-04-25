@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 Route::apiResource('/api/fournisseur',FournisseurController::class);
 Route::apiResource('/api/categorie',CategorieController::class);
-Route::apiResource('/api/souscategorie',CategorieController::class);
+Route::apiResource('/api/souscategorie',Souscategorie::class);
 /* Route::apiResource('/api/Facture',FactureController::class); */
 Route::resource('Facture',FactureController::class);
 
