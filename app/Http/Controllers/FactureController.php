@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Response;
 
 use App\Models\Facture;
 use Illuminate\Http\Request;
@@ -10,9 +11,21 @@ class FactureController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
+        
     {
-        return Facture::all();
+      
+        $query = $request->q;
+
+    if ($query) {
+
+        $factures=Facture::search($query)->paginate(5);
+     
+    } else {
+        $factures = Facture::paginate(5);
+    }
+
+    return response()->json($factures, 200);
     }
 
     /**
